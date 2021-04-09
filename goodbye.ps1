@@ -1,0 +1,1 @@
+﻿write-output("Good bye Long") 
