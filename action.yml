@@ -20,4 +20,4 @@
         shell: bash
         
       - run: ${{ github.action_path }}/goodbye.ps1
-        shell: powershell
+        shell: pwsh
