@@ -33,7 +33,6 @@
       - name: Get all modified and added .cs files
         shell: bash
         run: |
-#          URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/commits/${{ github.event.pull_request.number }}/files"
           URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/commits?per_page=1"
           FILES=$(curl -s -X GET -G $URL )
           echo $FILES
