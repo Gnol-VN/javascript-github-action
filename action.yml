@@ -29,7 +29,8 @@
       - name: view the PR number
         shell: bash
         run: |
-          echo "PR number = ${{ input.github-token }}"
+          echo "PR number = ${{ inputs }}"
+          echo "PR number = ${{ inputs.github-token }}"
           echo "PR number = ${GITHUB_REPOSITORY}"
       
       - name: Get all modified and added .cs files
