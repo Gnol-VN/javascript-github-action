@@ -29,7 +29,14 @@
           echo "PR number = ${{ github.event.pull_request.number }}"
           echo "PR number = ${GITHUB_REPOSITORY}"
           echo "PR number = ${{ env.PR_NUMBER }}"
-        
+
+      - id: files
+        uses: jitterbit/get-changed-files@v1
+      - run: |
+          for changed_file in ${{ steps.files.outputs.all }}; do
+            echo "Do something with this ${changed_file}."
+          done
+          
       - name: Get all modified and added .cs files
         shell: bash
         run: |
