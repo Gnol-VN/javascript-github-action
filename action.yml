@@ -30,33 +30,7 @@
           echo "PR number = ${GITHUB_REPOSITORY}"
           echo "PR number = ${{ env.PR_NUMBER }}"
 
-      - id: filesSpace
-        uses: jitterbit/get-changed-files@v1
-      - run: |
-          for changed_file in ${{ steps.files.outputs.all }}; do
-            echo "Do something with this ${changed_file}."
-          done
-          
-      - id: filesCSV
-        uses: jitterbit/get-changed-files@v1
-        with:
-          format: 'csv'
-      - run: |
-          mapfile -d ',' -t added_modified_files < <(printf '%s,' '${{ steps.files.outputs.added_modified }}')
-          for added_modified_file in "${added_modified_files[@]}"; do
-            echo "Do something with this ${added_modified_file}."
-          done
-          
-      - id: filesJSON
-        uses: jitterbit/get-changed-files@v1
-        with:
-          format: 'json'
-      - run: |
-          readarray -t removed_files <<<"$(jq -r '.[]' <<<'${{ steps.files.outputs.removed }}')"
-          for removed_file in ${removed_files[@]}; do
-            echo "Do something with this ${removed_file}."
-          done
-          
+      
       - name: Get all modified and added .cs files
         shell: bash
         run: |
