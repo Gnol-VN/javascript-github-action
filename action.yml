@@ -22,8 +22,15 @@
       - name: Execute powershell
         run: ${{ github.action_path }}/goodbye.ps1
         shell: pwsh
+
+      - name: view the PR number
+        shell: bash
+        run: |
+          echo "PR number = ${{ github.event.pull_request.number }}"
+          echo "PR number = ${GITHUB_REPOSITORY}"
+          echo "PR number = ${{ env.PR_NUMBER }}"
         
-      - name: 'Get all modified and added .cs files'
+      - name: Get all modified and added .cs files
         shell: bash
         run: |
           URL="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/files"
