@@ -5,6 +5,9 @@
       description: 'Who to greet'
       required: true
       default: 'World'
+    github-token:
+      required: true
+      description: 'Github token'
   outputs:
     random-number:
       description: "Random number"
@@ -26,10 +29,8 @@
       - name: view the PR number
         shell: bash
         run: |
-          echo "PR number = ${{ github.event.pull_request.number }}"
+          echo "PR number = ${{ input.github-token }}"
           echo "PR number = ${GITHUB_REPOSITORY}"
-          echo "PR number = ${{ env.PR_NUMBER }}"
-
       
       - name: Get all modified and added .cs files
         shell: bash
